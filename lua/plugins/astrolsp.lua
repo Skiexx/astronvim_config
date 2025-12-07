@@ -39,11 +39,17 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
+      "nil_ls"
       -- "pyright"
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
+      nil_ls = {
+        cmd = { "nil" },
+        filetypes = { "nix" },
+        root_dir = require("lspconfig.util").root_pattern("flake.nix", ".git"),
+      },
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
     },
     -- customize how language servers are attached
